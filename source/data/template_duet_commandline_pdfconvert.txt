@@ -1,0 +1,1 @@
+{WKHTMLEXE} --zoom 1.25 --page-size letter "{INPUTFILE}" "{OUTPUTFILE}"

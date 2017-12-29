@@ -1,0 +1,9 @@
+// First line is list of comma separated colors (the first color will be taken as first player color, second color as second player color
+Blue, Red, Yellow, Black
+// Now we have a series of comma separated triples specifying #cards, color
+1, black
+8, blue
+8, red
+7, yellow
+1, {STARTINGPLAYERCOLOR}
+

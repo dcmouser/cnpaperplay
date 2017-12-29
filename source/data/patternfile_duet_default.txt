@@ -1,0 +1,12 @@
+// First line is list of comma separated colors, in order to be displayed in lower list
+Green, Yellow, Black
+// Now we have a series of comma separated triples specifying #cards, player1color, player2color
+1, black, black
+3, green, green
+1, black, green
+1, green, black
+1, black, yellow
+1, yellow,black
+5, green, yellow
+5, yellow, green
+7, yellow, yellow

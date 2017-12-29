@@ -1,0 +1,12 @@
+#!wing
+#!version=5.0
+##################################################################
+# Wing IDE project file                                          #
+##################################################################
+[project attributes]
+proj.file-list = [loc('cnduet.py'),
+                  loc('cno.py'),
+                  loc('cnteam.py'),
+                  loc('dcpdfer.py'),
+                  loc('dcstrtemplate.py')]
+proj.file-type = 'shared'

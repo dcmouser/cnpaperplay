@@ -1,0 +1,3 @@
+make seeds different for cnduet and cnteam
+center the two words on cnteam where there are 8
+test on linux
