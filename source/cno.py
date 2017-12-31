@@ -96,6 +96,11 @@ class CnGame:
     CnGame game class
     """
 
+    # unicode html for checkboxes
+    # Some of the potential checkboxes display fine on screen but don't print well from some pdf printers (foxit); for alternatives see http://www.amp-what.com/unicode/search/square
+    htmlunicode_checkbox = '&#128307;'
+
+
     @staticmethod
     def getVersionNumber(): return 'v3.0'
     @staticmethod
@@ -267,7 +272,7 @@ class CnGame:
         xcount = 0
         xspacer = 3
         for i in range(0,boxcount):
-            hretv += '&#10066;'
+            hretv += self.htmlunicode_checkbox
             xcount += 1
             if (xcount == xspacer):
                 hretv += ' '
