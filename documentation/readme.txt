@@ -5,7 +5,11 @@ For more information and discussion see: http://www.donationcoder.com/forum/inde
 
 
 //---------------------------------------------------------------------------
-html to pdf conversion is done by the open source tool wkhtmltopdf:
+CREDITS:
+
+Codenames Duet is: https://boardgamegeek.com/boardgame/224037/codenames-duet
+
+Html to pdf conversion is done by the open source tool wkhtmltopdf:
  https://wkhtmltopdf.org/
  https://github.com/wkhtmltopdf/wkhtmltopdf
 //---------------------------------------------------------------------------
