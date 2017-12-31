@@ -619,8 +619,13 @@ class CnGameTeam(CnGame):
                 # kludge for an empty wordlist
                 wordlist = [ " " ]
             if (index>0):
-                # spacer line
-                hretv += '  <tr> <td colspan="' + str(colcount+1) + '">&nbsp;</td> </tr>' + "\n"
+                # spacer line(s) between colors
+                if (i==1):
+                    spacerlines = 3
+                else:
+                    spacerlines = 2
+                for j in range(0,spacerlines):
+                    hretv += '  <tr> <td colspan="' + str(colcount+1) + '">&nbsp;</td> </tr>' + "\n"
             hretv += self.renderTableRows(wordlist, colcount, colorname, False)
             if (flag_adjustfirst and index==0):
                 # dif # of columns means it needs a dif table
