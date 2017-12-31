@@ -7,7 +7,8 @@ For more information and discussion see: http://www.donationcoder.com/forum/inde
 //---------------------------------------------------------------------------
 CREDITS:
 
-Codenames Duet is: https://boardgamegeek.com/boardgame/224037/codenames-duet
+Codenames is: https://boardgamegeek.com/boardgame/178900/codenames , designed by Vlaada Chvátil
+Codenames Duet is: https://boardgamegeek.com/boardgame/224037/codenames-duet , designed by Vlaada Chvátil and Scot Eaton
 
 Html to pdf conversion is done by the open source tool wkhtmltopdf:
  https://wkhtmltopdf.org/
