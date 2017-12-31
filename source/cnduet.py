@@ -95,11 +95,9 @@ def main():
 
     # create output pdf files and start them off
     pdfout_player1 = dcpdfer.Dcpdfer(option_outpath, basefilename+"_p1")
-    stemplate.setField('{PLAYERID}', '1 of 2');
     pdfout_player1.addHtmlPagedata(stemplate.retrieveText())
     #
     pdfout_player2 = dcpdfer.Dcpdfer(option_outpath, basefilename+"_p2")
-    stemplate.setField('{PLAYERID}', '2 of 2');
     pdfout_player2.addHtmlPagedata(stemplate.retrieveText())
 
 

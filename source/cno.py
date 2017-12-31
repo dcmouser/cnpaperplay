@@ -465,7 +465,8 @@ class CnGameDuet(CnGame):
 
         # now we need to fill in fields to replace in rendering
         self.gamepageStemplate.setField('{GAMEID}', self.calcGameId())
-        self.gamepageStemplate.setField('{PLAYERID}', str(playerid) + " of 2")
+        #self.gamepageStemplate.setField('{PLAYERID}', str(playerid) + " of 2")
+        self.gamepageStemplate.setField('{PLAYERID}', str(playerid))
 
         self.gamepageStemplate.setField('{TURNCOUNT}', str(self.option_turncount))
         self.gamepageStemplate.setField('{MISTAKECOUNT}', str(self.option_mistakecount))
