@@ -3,6 +3,15 @@ Python utilities to create play by paper versions of the games Codenames and Cod
 by mouser@donationcoder.com
 For more information and discussion see: http://www.donationcoder.com/forum/index.php?topic=44471.0
 
+
+//---------------------------------------------------------------------------
+html to pdf conversion is done by the open source tool wkhtmltopdf:
+ https://wkhtmltopdf.org/
+ https://github.com/wkhtmltopdf/wkhtmltopdf
+//---------------------------------------------------------------------------
+
+
+
 //---------------------------------------------------------------------------
 IMPORTANT NOTE FOR LINUX USERS:
 
