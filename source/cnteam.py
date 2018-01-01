@@ -58,7 +58,8 @@ def main():
     option_datadir = 'data';
     option_language = args.option_language
     option_wordfile = args.option_wordfile
-    option_wordfile_encoding = cno.CnGame.fileInLangDirectoryContents(option_datadir,option_language,'encoding.txt');
+    option_wordfile_encoding = cno.CnGame.fileInLangDirectoryContents(option_datadir,option_language,'encoding_wordfile.txt')
+    option_template_encoding = cno.CnGame.fileInLangDirectoryContents(option_datadir,option_language,'encoding_templates.txt')
     option_patternfile = args.option_patternfile
     option_outpath = args.option_outpath
     option_seedstart = int(args.option_seedstart)
@@ -72,11 +73,11 @@ def main():
     basefilename = option_bookname + '_' + str(option_seedstart) + '-' + str(option_seedstart+option_gamecount-1)
 
     # create the cduet game manager
-    game = cno.CnGameTeam(option_wordfile, option_wordfile_encoding, option_patternfile, option_datadir, option_language)
+    game = cno.CnGameTeam(option_wordfile, option_wordfile_encoding, option_template_encoding, option_patternfile, option_datadir, option_language)
 
     # templater for instructions page
     stemplate = dcstrtemplate.DcStrTemplate()
-    stemplate.loadFromFile(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_intropage.html'));
+    stemplate.loadFromFile(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_intropage.html'),option_template_encoding);
     #
     stemplate.setField('{BOOKNAME}', basefilename);
     stemplate.setField('{VERSION_NUMBER}', cno.CnGame.getVersionNumber());
@@ -116,9 +117,9 @@ def main():
         pdfout_guesser.addHtmlPagedata(html_guesser)
 
     # end pages
-    pdfout_player1.addHtmlPagedataFromFile(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_endbook.html'),stemplate)
-    pdfout_player2.addHtmlPagedataFromFile(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_endbook.html'),stemplate)
-    pdfout_guesser.addHtmlPagedataFromFile(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_endbook.html'),stemplate)
+    pdfout_player1.addHtmlPagedataFromFile(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_endbook.html'),stemplate, option_template_encoding)
+    pdfout_player2.addHtmlPagedataFromFile(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_endbook.html'),stemplate, option_template_encoding)
+    pdfout_guesser.addHtmlPagedataFromFile(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_endbook.html'),stemplate, option_template_encoding)
 
     # write out final HTML files
     pdfout_player1.writeAndCloseFile()
@@ -127,9 +128,9 @@ def main():
 
     # if they want pdf try that now
     if (option_format == 'pdf'):
-        pdfout_player1.convertToPdf(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_leader_commandline_pdfconvert.txt'),stemplate)
-        pdfout_player2.convertToPdf(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_leader_commandline_pdfconvert.txt'),stemplate)
-        pdfout_guesser.convertToPdf(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_guesser_commandline_pdfconvert.txt'),stemplate)
+        pdfout_player1.convertToPdf(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_leader_commandline_pdfconvert.txt'),stemplate, option_template_encoding)
+        pdfout_player2.convertToPdf(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_leader_commandline_pdfconvert.txt'),stemplate, option_template_encoding)
+        pdfout_guesser.convertToPdf(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_guesser_commandline_pdfconvert.txt'),stemplate, option_template_encoding)
 
     # say goodbye
     print "Exiting."

@@ -439,7 +439,7 @@ class CnGameDuet(CnGame):
     CnGameDuet for duet game class
     """
 
-    def __init__(self, option_wordfile, option_wordfile_encoding, option_patternfile, option_datadir, option_language, option_turncount, option_mistakecount, option_goalcount):
+    def __init__(self, option_wordfile, option_wordfile_encoding, option_template_encoding, option_patternfile, option_datadir, option_language, option_turncount, option_mistakecount, option_goalcount):
         """Initialize the game manager with files to use, etc."""
         #
         # base class init
@@ -451,7 +451,7 @@ class CnGameDuet(CnGame):
         #
         # load template for game html, we will use this when outputting
         self.gamepageStemplate = dcstrtemplate.DcStrTemplate()
-        self.gamepageStemplate.loadFromFile(CnGame.fileInLangDirectory(self.option_datadir, self.option_language,'template_duet_gamepage.html'));
+        self.gamepageStemplate.loadFromFile(CnGame.fileInLangDirectory(self.option_datadir, self.option_language,'template_duet_gamepage.html'),option_template_encoding);
 
 
 
@@ -533,14 +533,14 @@ class CnGameTeam(CnGame):
     CnGameTeam for team game class
     """
 
-    def __init__(self, option_wordfile, option_wordfile_encoding, option_patternfile, option_datadir, option_language):
+    def __init__(self, option_wordfile, option_wordfile_encoding, option_template_encoding, option_patternfile, option_datadir, option_language):
         """Initialize the game manager with files to use, etc."""
         CnGame.__init__(self, option_wordfile, option_wordfile_encoding, option_patternfile, option_datadir, option_language)
         # load template for game html, we will use this when outputting
         self.leaderPageStemplate = dcstrtemplate.DcStrTemplate()
-        self.leaderPageStemplate.loadFromFile(CnGame.fileInLangDirectory(self.option_datadir, self.option_language,'template_team_leaderpage.html'));
+        self.leaderPageStemplate.loadFromFile(CnGame.fileInLangDirectory(self.option_datadir, self.option_language,'template_team_leaderpage.html'),option_template_encoding);
         self.guesserPageStemplate = dcstrtemplate.DcStrTemplate()
-        self.guesserPageStemplate.loadFromFile(CnGame.fileInLangDirectory(self.option_datadir, self.option_language,'template_team_guesserpage.html'));
+        self.guesserPageStemplate.loadFromFile(CnGame.fileInLangDirectory(self.option_datadir, self.option_language,'template_team_guesserpage.html'),option_template_encoding);
 
 
     def generateGame(self, seed):

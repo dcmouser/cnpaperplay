@@ -12,6 +12,7 @@ pdf helper object class
 # -----------------------------------------------------------
 #libs
 import os
+import io
 
 # string template helper
 import dcstrtemplate
@@ -46,14 +47,16 @@ class Dcpdfer:
         # ATTN: UNFINISHED
         self.htmlout += pagehtml
 
-    def addHtmlPagedataFromFile(self, htmlfilepath, stemplate = None):
+    def addHtmlPagedataFromFile(self, htmlfilepath, stemplate, option_encoding):
         """Add contents of file as html."""
         if (stemplate == None):
             # open file and read contents
-            with open(htmlfilepath, 'r') as myfile:
+            #with open(htmlfilepath, 'r') as myfile:
+            with io.open(htmlfilepath, 'r', encoding=option_encoding) as myfile:
                 html=myfile.read()
+            html = html.encode('utf-8')
         else:
-            stemplate.loadFromFile(htmlfilepath);
+            stemplate.loadFromFile(htmlfilepath, option_encoding);
             html = stemplate.retrieveText()
         # add html contents as a page
         self.addHtmlPagedata(html)
@@ -66,13 +69,13 @@ class Dcpdfer:
 
 
 
-    def convertToPdf(self, commandlinetemplatefile, stemplate):
+    def convertToPdf(self, commandlinetemplatefile, stemplate, option_encoding):
         """The file has already been written to self.fullpath; now try to invoke converter on it."""
         # load the command to run from a template file
         inputfilename = self.fullpath + '.html'
         outputfilename = self.fullpath + '.pdf'
         #stemplate = dcstrtemplate.DcStrTemplate()
-        stemplate.loadFromFile(commandlinetemplatefile);
+        stemplate.loadFromFile(commandlinetemplatefile, option_encoding);
         stemplate.setField('{INPUTFILE}', inputfilename);
         stemplate.setField('{OUTPUTFILE}', outputfilename);
         commandline = stemplate.retrieveText()
