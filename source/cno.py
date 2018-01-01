@@ -18,6 +18,7 @@ import platform
 
 # string template helper
 import dcstrtemplate
+import dcwordtranslator
 # -----------------------------------------------------------
 
 
@@ -150,7 +151,7 @@ class CnGame:
         else:
             return '.exe'
 
-    def __init__(self, option_wordfile, option_wordfile_encoding, option_patternfile, option_datadir, option_language):
+    def __init__(self, option_wordfile, option_wordfile_encoding, option_template_encoding, option_patternfile, option_datadir, option_language):
         # data dir and language
         self.option_datadir = option_datadir;
         self.option_language = option_language
@@ -161,6 +162,9 @@ class CnGame:
         # load pattern file
         self.option_patternfile = self.fileInLangDirectory(self.option_datadir, self.option_language,option_patternfile)
         self.loadPatternFile()
+        # load extra word translations
+        self.option_wordtranslationfile = self.fileInLangDirectory(self.option_datadir, self.option_language, 'word_translations.txt')
+        self.loadWordTranslations(self.option_wordtranslationfile, option_template_encoding)
 
 
     def getColorIndex(self, colorindex):
@@ -242,6 +246,12 @@ class CnGame:
                         # and add it to our template list
                         self.cardtemplates.append(card)
                 patternindex += 1
+
+
+    def loadWordTranslations(self,filepath, option_encoding):
+        """Load simple word translator, used for color translations, etc."""
+        self.wordTranslator = dcwordtranslator.DcWordTranslator()
+        self.wordTranslator.loadFromFile(filepath, option_encoding)
 
 
     def getColorCountString(self, playerid):
@@ -353,7 +363,7 @@ class CnGame:
                 if (headerlabel != ''):
                     hretv += '<td align="left"><b>'
                     if (ycount==0):
-                        hretv += headerlabel
+                        hretv += self.wordTranslator.translateWord(headerlabel)
                     else:
                         hretv += '&nbsp;'
                     hretv += '</b></td> '
@@ -443,7 +453,7 @@ class CnGameDuet(CnGame):
         """Initialize the game manager with files to use, etc."""
         #
         # base class init
-        CnGame.__init__(self, option_wordfile, option_wordfile_encoding, option_patternfile, option_datadir, option_language)
+        CnGame.__init__(self, option_wordfile, option_wordfile_encoding, option_template_encoding, option_patternfile, option_datadir, option_language)
         #
         self.option_turncount = option_turncount
         self.option_mistakecount = option_mistakecount
@@ -535,7 +545,7 @@ class CnGameTeam(CnGame):
 
     def __init__(self, option_wordfile, option_wordfile_encoding, option_template_encoding, option_patternfile, option_datadir, option_language):
         """Initialize the game manager with files to use, etc."""
-        CnGame.__init__(self, option_wordfile, option_wordfile_encoding, option_patternfile, option_datadir, option_language)
+        CnGame.__init__(self, option_wordfile, option_wordfile_encoding, option_template_encoding, option_patternfile, option_datadir, option_language)
         # load template for game html, we will use this when outputting
         self.leaderPageStemplate = dcstrtemplate.DcStrTemplate()
         self.leaderPageStemplate.loadFromFile(CnGame.fileInLangDirectory(self.option_datadir, self.option_language,'template_team_leaderpage.html'),option_template_encoding);
@@ -567,8 +577,8 @@ class CnGameTeam(CnGame):
             colorlabel_player = self.getColorIndex(colorindex_player)
             colorlabel_startingplayer = self.getColorIndex(self.startingPlayer)
             self.leaderPageStemplate.setField('{GAMEID}', self.calcGameId())
-            self.leaderPageStemplate.setField('{PLAYERID}', colorlabel_player + " Leader")
-            self.leaderPageStemplate.setField('{STARTINGPLAYERCOLOR}', colorlabel_startingplayer)
+            self.leaderPageStemplate.setField('{PLAYERID}', self.wordTranslator.translateWord(colorlabel_player))
+            self.leaderPageStemplate.setField('{STARTINGPLAYERCOLOR}', self.wordTranslator.translateWord(colorlabel_startingplayer))
             # now render word tables
             coloredwordtable = self.renderTeamColorGroupedWordList(playerid)
             self.leaderPageStemplate.setField('{COLOREDWORDTABLE}', coloredwordtable)

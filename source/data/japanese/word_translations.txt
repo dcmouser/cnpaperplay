@@ -1,0 +1,5 @@
+Green = グリーン
+Yellow = イエロー
+Black = ブラック
+Blue = ブルー
+Red = レッド

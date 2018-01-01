@@ -27,7 +27,7 @@ class DcStrTemplate:
         """Load file into text."""
         # open file and read contents
         #with open(filepath, 'r') as myfile:
-        print "LOADING "+filepath+" USING ENCODING "+option_encoding
+        #print "LOADING "+filepath+" USING ENCODING "+option_encoding
         with io.open(filepath, 'r', encoding=option_encoding) as myfile:
             self.text=myfile.read()
         self.text = self.text.encode('utf-8')
