@@ -103,9 +103,9 @@ class CnGame:
 
 
     @staticmethod
-    def getVersionNumber(): return 'v3.0'
+    def getVersionNumber(): return 'v3.1'
     @staticmethod
-    def getVersionDate(): return 'Dec 30, 2017'
+    def getVersionDate(): return 'Dec 31, 2017'
     @staticmethod
     def fileInDirectory(dirpart, filepart):
         """Helper to make full filepath"""
