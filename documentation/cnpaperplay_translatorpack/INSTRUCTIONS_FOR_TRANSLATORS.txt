@@ -1,0 +1,16 @@
+The most important thing to translate is wordfile_default.txt, which is the list of words.
+The file should be saved in utf-8 format.
+Note that the exact words and order of words is not important, so you if some words have no translation, or for some other reason should be deleted, that is ok.
+
+Of secondary importance is the rules and other html template files.
+The most important onces are template_duet_intropage.html and template_duet_gamepage.html.
+The *_team_*.html templates are used for team-based codenames print and play which is rarely actually played.
+
+Lastly there is word_translations.txt a small file which should be translated as:
+Green = TRANSLATED_WORD_FOR_COLOR_Green
+Yellow = TRANSLATED_WORD_FOR_COLOR_Yellow
+Black = TRANSLATED_WORD_FOR_COLOR_Black
+Blue = TRANSLATED_WORD_FOR_COLOR_Blue
+Red = TRANSLATED_WORD_FOR_COLOR_Red
+
+Thanks!
