@@ -1,0 +1,5 @@
+Green = Grün
+Yellow = Gelb
+Black = Schwarz
+Blue = Blau
+Red = Rot
