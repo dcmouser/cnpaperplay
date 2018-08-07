@@ -4,6 +4,7 @@ https://github.com/dcmouser/cnpaperplay
 
 Highly customizable and translatable.
 
+DonationCoder web page: http://www.donationcoder.com/software/mouser/popular-apps/codenames-play-on-paper
 For discussion see http://www.donationcoder.com/forum/index.php?topic=44471.0
 
 Note that this game plays very well over the phone, by text, by email, etc. -- players do not have to be in the same physical location.
