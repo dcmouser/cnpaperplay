@@ -99,7 +99,7 @@ class CnGame:
 
     # unicode html for checkboxes
     # Some of the potential checkboxes display fine on screen but don't print well from some pdf printers (foxit); for alternatives see http://www.amp-what.com/unicode/search/square
-    htmlunicode_checkbox = '&#128307;'
+    htmlunicode_checkbox = '&#9744;' #'&#128307;'
 
 
     @staticmethod
@@ -146,7 +146,8 @@ class CnGame:
 
     @staticmethod
     def getPlatformExeExtension():
-        if (platform.system()=='Linux'):
+        system = platform.system().lower()
+        if (system=='linux' or system=='darwin'):
             return ''
         else:
             return '.exe'

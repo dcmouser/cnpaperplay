@@ -1,1 +1,1 @@
-{WKHTMLEXE} --zoom 1.25 --page-size letter "{INPUTFILE}" "{OUTPUTFILE}"
+{WKHTMLEXE} --zoom 1.25 --enable-local-file-access --page-size letter "{INPUTFILE}" "{OUTPUTFILE}"
