@@ -1,0 +1,5 @@
+Green = Verde
+Yellow = Galben
+Black = Negru
+Blue = Albastru
+Red = Rosu

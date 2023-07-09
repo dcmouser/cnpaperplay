@@ -25,7 +25,8 @@ class DcWordTranslator:
         #print "DcWordTranslator LOADING "+filepath+" USING ENCODING "+option_encoding
         with io.open(filepath, 'r', encoding=option_encoding) as myfile:
             text = myfile.read()
-            text = text.encode('utf-8')
+            #python3 7/7/23
+            #text = text.encode('utf-8')
             lines = text.split("\n")
 
         # now split into pairs

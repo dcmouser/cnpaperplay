@@ -34,7 +34,7 @@ def main():
     """Main function"""
 
     # say hello
-    print "Hello from cnpaperplay utility, running cnteam.py " + cno.CnGame.getVersionNumber() + ' - ' + cno.CnGame.getVersionDate()
+    print("Hello from cnpaperplay utility, running cnteam.py " + cno.CnGame.getVersionNumber() + ' - ' + cno.CnGame.getVersionDate())
 
     # get commandline args
 
@@ -104,7 +104,7 @@ def main():
 
     # now loop and build games
     for seed in range(option_seedstart, option_seedstart+option_gamecount):
-        print " Generating game #" + str(seed)
+        print(" Generating game #" + str(seed))
         # generate the game (assign labels to cards, etc.)
         game.generateGame(seed)
         # render html
@@ -122,9 +122,9 @@ def main():
     pdfout_guesser.addHtmlPagedataFromFile(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_endbook.html'),stemplate, option_template_encoding)
 
     # write out final HTML files
-    pdfout_player1.writeAndCloseFile()
-    pdfout_player2.writeAndCloseFile()
-    pdfout_guesser.writeAndCloseFile()
+    pdfout_player1.writeAndCloseFile(option_template_encoding)
+    pdfout_player2.writeAndCloseFile(option_template_encoding)
+    pdfout_guesser.writeAndCloseFile(option_template_encoding)
 
     # if they want pdf try that now
     if (option_format == 'pdf'):
@@ -133,7 +133,7 @@ def main():
         pdfout_guesser.convertToPdf(cno.CnGame.fileInLangDirectory(option_datadir,option_language,'template_team_guesser_commandline_pdfconvert.txt'),stemplate, option_template_encoding)
 
     # say goodbye
-    print "Exiting."
+    print("Exiting.")
 
 # -----------------------------------------------------------
 

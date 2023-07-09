@@ -1,7 +1,7 @@
 # !/usr/bin/python
 
 # cduet
-# version 3.0, 10/14/17
+# version 3.1, 10/14/17 - 7/8/23
 # (c) mouser@donationcoder.com
 
 """
@@ -103,9 +103,9 @@ class CnGame:
 
 
     @staticmethod
-    def getVersionNumber(): return 'v3.1'
+    def getVersionNumber(): return 'v3.2'
     @staticmethod
-    def getVersionDate(): return 'Dec 31, 2017'
+    def getVersionDate(): return 'July 7, 2023'
     @staticmethod
     def fileInDirectory(dirpart, filepart):
         """Helper to make full filepath"""
@@ -196,6 +196,7 @@ class CnGame:
         self.wordlist = list()
         # read file as a list of lines
         # with io.open(self.option_wordfile, 'r', encoding='utf-8') as myfile:
+        print('Loading word file as text file format: {}'.format(self.option_wordfile_encoding))
         with io.open(self.option_wordfile, 'r', encoding=self.option_wordfile_encoding) as myfile:
         #with open(self.option_wordfile, 'r') as myfile:
             wordlist=myfile.readlines()
@@ -204,12 +205,13 @@ class CnGame:
                 #word = word.encode('utf-8', 'ignore')
                 #word = word.decode('iso-8859-1').encode('utf8')
                 word = word.strip().upper()
-                word = word.encode('utf-8')
+                #python3 7/7/23
+                #word = word.encode('utf-8')
                 word = word.strip().upper()
                 if (len(word)==0 or word[0]=='/' or word[0]=='#'):
                     continue
                 self.wordlist.append(word)
-            #print self.wordlist
+            #print(self.wordlist)
 
 
 

@@ -30,7 +30,8 @@ class DcStrTemplate:
         #print "LOADING "+filepath+" USING ENCODING "+option_encoding
         with io.open(filepath, 'r', encoding=option_encoding) as myfile:
             self.text=myfile.read()
-        self.text = self.text.encode('utf-8')
+        #python3 7/7/23
+        #self.text = self.text.encode('utf-8')
         #self.text = self.text.strip()
 
 

@@ -54,17 +54,18 @@ class Dcpdfer:
             #with open(htmlfilepath, 'r') as myfile:
             with io.open(htmlfilepath, 'r', encoding=option_encoding) as myfile:
                 html=myfile.read()
-            html = html.encode('utf-8')
+            #python3 7/7/23
+            #html = html.encode('utf-8')
         else:
             stemplate.loadFromFile(htmlfilepath, option_encoding);
             html = stemplate.retrieveText()
         # add html contents as a page
         self.addHtmlPagedata(html)
 
-    def writeAndCloseFile(self):
+    def writeAndCloseFile(self, option_encoding):
         """Write out the file that we have been building, then close it."""
-        # ATTN: UNFINISHED
-        with open(self.fullpath + '.html', "w") as myfile:
+        # ATTN: 7/8/23 needs fixing to properly write utf8 html data
+        with open(self.fullpath + '.html', "w", encoding = option_encoding) as myfile:
             myfile.write(self.htmlout)
 
 
@@ -82,8 +83,8 @@ class Dcpdfer:
         # linux / in commandline have to be changed to directory separator
         if (os.sep == "\\"):
             commandline = commandline.replace("/",os.sep)
-        print 'Attempting to convert "' + inputfilename + '" to "' + outputfilename + '":'
-        #print 'shelling: ' + commandline
+        print('Attempting to convert "' + inputfilename + '" to "' + outputfilename + '":')
+        #print('shelling: ' + commandline)
         resultout = check_output(commandline, shell=True)
-        #print resultout
+        #print(resultout)
 
